@@ -39,7 +39,7 @@ Before running locally, ensure you have:
 
 * PHP 8.1 or later
 * Composer
-* MySQL / XAMPP / LARAGON
+* WAMP / XAMPP / LARAGON
 * Git
 * Internet connection (for fetching cat facts)
 
@@ -50,7 +50,7 @@ Before running locally, ensure you have:
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/backend-api.git
+git clone [BACKEND-API](https://github.com/integral-hub/backend-api.git)
 cd backend-api
 ```
 
@@ -211,5 +211,3 @@ Route::middleware('throttle:5,1')->get('/me', [UserController::class, 'show']);
 **LinkedIn:** [linkedinprofile](https://linkedin.com/in/adeosunemer025)
 
 ---
-
-Would you like me to generate a **short version** (e.g., “README-lite”) you can use for your GitHub repo directly — with fewer explanations but all critical info (for a clean professional look)?
