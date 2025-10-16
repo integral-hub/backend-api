@@ -1,9 +1,5 @@
-Perfect ✅ — here’s a **professional, clean, and complete `README.md`** you can use for your Stage 0 Laravel project (“Dynamic Profile Endpoint”).
-It includes setup instructions, environment configuration, API usage, and example response — all in line with the task requirements.
 
----
-
-# 🧠 Backend Wizards — Stage 0: Dynamic Profile Endpoint
+# Backend Wizards — Stage 0: Dynamic Profile Endpoint
 
 ## 📋 Project Overview
 
