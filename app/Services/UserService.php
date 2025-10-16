@@ -15,10 +15,10 @@ class UserService implements UserInterface
      */
     public function getUserWithFact(): array
     {
-        // Try to get user data from DB
+        //get user data
         $user = $this->getUserData();
 
-        // Fetch cat fact with graceful fallback
+        // Fetch cat fact 
         $fact = $this->getCatFact();
 
         // Add timestamp

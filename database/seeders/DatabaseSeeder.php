@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Abiodun Adeosun',
             'email' => 'aeadeosun@yahoo.com',
-            'stack' => 'LAMP (stack)',
+            'stack' => 'LAMP',
         ]);
     }
 }
