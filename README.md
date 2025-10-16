@@ -11,7 +11,7 @@ It demonstrates key backend concepts including:
 * Service abstraction and interface-driven architecture
 * Integration with a third-party API
 * Dynamic timestamp formatting (ISO 8601)
-* Graceful error handling, logging, and rate limiting
+* Error handling, logging, and rate limiting
 
 ---
 
@@ -50,7 +50,7 @@ Before running locally, ensure you have:
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone [BACKEND-API](https://github.com/integral-hub/backend-api.git)
+git clone https://github.com/integral-hub/backend-api.git
 cd backend-api
 ```
 
@@ -138,9 +138,9 @@ http://127.0.0.1:8000/api/me
 
 ✅ Dynamic UTC timestamp in ISO 8601 format
 ✅ Random cat fact fetched on every request
-✅ Graceful fallback on API failure
+✅ Fallback on API failure
 ✅ Basic logging for debugging
-✅ Rate limiting to prevent abuse (`10 requests per minute`)
+✅ Rate limiting to prevent abuse (`5 requests per minute`)
 ✅ Interface + Service pattern for clean separation of concerns
 ✅ Follows PSR-4 and SOLID principles
 
