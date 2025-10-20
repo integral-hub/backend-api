@@ -48,8 +48,6 @@ class AppServiceProvider extends ServiceProvider
             if ($stmt->rowCount() === 0) {
                 $pdo->exec("CREATE DATABASE `$dbName` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
                 Log::info("Database `$dbName` created successfully.");
-            } else {
-                Log::info("Database `$dbName` already exists.");
             }
         } catch (PDOException $e) {
             Log::error("Failed to check or create database: " . $e->getMessage());
@@ -71,9 +69,7 @@ class AppServiceProvider extends ServiceProvider
                 // Run seeder
                 Artisan::call('db:seed', ['--force' => true]);
                 Log::info("✅ Seeders ran successfully.");
-            } else {
-                Log::info("Migrations already applied.");
-            }
+            } 
         } catch (PDOException $e) {
             Log::error("Failed to connect to DB or run migrations: " . $e->getMessage());
         }

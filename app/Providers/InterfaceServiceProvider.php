@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Interfaces\StringAnalysisInterface;
 use App\Interfaces\UserInterface;
+use App\Services\StringAnalysisService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +16,8 @@ class InterfaceServiceProvider extends ServiceProvider
      * @var array<string, string>
      */
       public $bindings = [
-        UserInterface::class => UserService::class
+        UserInterface::class => UserService::class,
+        StringAnalysisInterface::class => StringAnalysisService::class
     ];
 
     /**
