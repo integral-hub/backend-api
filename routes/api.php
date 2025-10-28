@@ -2,11 +2,22 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StringAnalysisController;
+use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['throttle:5,1'])->group(function () {
     Route::get('/me', [UserController::class, 'show']);
 });
+
+Route::prefix('countries')->controller(CountryController::class)->group(function () {
+        Route::post('/refresh', 'refresh');
+        Route::get('/', 'index');
+        Route::get('/{name}', 'show');
+        Route::delete('/{name}', 'destroy');
+        Route::get('/image', 'imageView')->name('view');
+    });
+Route::get('/status', [CountryController::class, 'status']);
+
 
 Route::prefix('strings')->controller(StringAnalysisController::class)->group(function () {
     // GET /api/strings - Filter strings
