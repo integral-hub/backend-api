@@ -36,7 +36,7 @@ A Laravel-based RESTful API that fetches country data and exchange rates from ex
 
 ```bash
 git clone https://github.com/integral-hub/backend-api.git
-cd country-exchange-api
+cd backend-api
 ````
 
 ### 2️⃣ Install Dependencies
