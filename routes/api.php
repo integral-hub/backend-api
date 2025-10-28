@@ -12,9 +12,9 @@ Route::middleware(['throttle:5,1'])->group(function () {
 Route::prefix('countries')->controller(CountryController::class)->group(function () {
         Route::post('/refresh', 'refresh');
         Route::get('/', 'index');
+        Route::get('/image', 'imageView')->name('view');
         Route::get('/{name}', 'show');
         Route::delete('/{name}', 'destroy');
-        Route::get('/image', 'imageView')->name('view');
     });
 Route::get('/status', [CountryController::class, 'status']);
 
