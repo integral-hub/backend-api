@@ -1,213 +1,117 @@
 
-# Backend Wizards — Stage 0: Dynamic Profile Endpoint
+# 🧩 String Analyzer API (Laravel)
 
-## 📋 Project Overview
-
-building a dynamic RESTful API endpoint `/api/me` that returns your profile information along with a **random cat fact** fetched from an external API.
-
-It demonstrates key backend concepts including:
-
-* API design & structure (Laravel)
-* Service abstraction and interface-driven architecture
-* Integration with a third-party API
-* Dynamic timestamp formatting (ISO 8601)
-* Error handling, logging, and rate limiting
+A RESTful Laravel API that analyzes strings and computes properties such as palindrome check, unique characters, and more.
 
 ---
 
-## 🚀 Endpoint Summary
+## ⚙️ **Installation & Setup**
 
-| Method | Endpoint  | Description                                      |
-| ------ | --------- | ------------------------------------------------ |
-| `GET`  | `/api/me` | Returns your profile info and a dynamic cat fact |
+### 🧰 Requirements
 
----
-
-## 📦 Tech Stack
-
-* **Framework:** Laravel 12+
-* **Language:** PHP 8.1+
-* **HTTP Client:** Laravel HTTP (based on Guzzle)
-* **Logging:** Laravel Log Channel (default)
-* **Rate limiting:** Laravel Throttle Middleware
+* PHP ≥ 8.1
+* Composer ≥ 2.0
+* Laravel 12+
+* Wamp | Xampp | Laragon
 
 ---
 
-## 🧰 Requirements
-
-Before running locally, ensure you have:
-
-* PHP 8.1 or later
-* Composer
-* WAMP / XAMPP / LARAGON
-* Git
-* Internet connection (for fetching cat facts)
-
----
-
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the repository
+### 🪄 Installation Steps
 
 ```bash
+# Clone the repository
 git clone https://github.com/integral-hub/backend-api.git
 cd backend-api
-```
 
-### 2️⃣ Install dependencies
-
-```bash
+# Install dependencies
 composer install
-```
 
-### 3️⃣ Configure environment
-
-Copy the `.env.example` file and update variables:
-
-```bash
+# Copy environment file
 cp .env.example .env
+
+# Generate app key
 php artisan key:generate
+
+# Run database migrations (optional)
+php artisan migrate
 ```
 
-Then open `.env` and ensure you have:
+---
 
-```env
-APP_NAME="Backend API"
-APP_ENV=local
-APP_DEBUG=true
-APP_URL=http://localhost:8000
+## 🧠 **Running the App Locally**
 
-# External API Configurations
-CAT_FACTS_URL=https://catfact.ninja/fact
-CAT_FACTS_TIMEOUT=10
-```
-
-### 4️⃣ Run the application
+Start the local development server:
 
 ```bash
 php artisan serve
 ```
 
-The API will be available at:
+Your API will be available at:
+👉 **[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)**
+
+You can test endpoints using Postman, Thunder Client, or any REST client.
+
+---
+
+## 🌍 **Base URL**
+
+| Environment | Base URL                               |
+| ----------- | -------------------------------------- |
+| Local       | `http://127.0.0.1:8000/api`            |
+| Production  | `https://api.techtrovelab.com/api` |
+
+---
+
+## 📘 **API Endpoints Summary**
+
+| Method   | Endpoint                              | Description                                 |
+| -------- | ------------------------------------- | ------------------------------------------- |
+| `POST`   | `/strings`                            | Analyze and store a new string              |
+| `GET`    | `/strings/{string_value}`             | Retrieve details of a specific string       |
+| `GET`    | `/strings`                            | Get all stored strings (supports filtering) |
+| `GET`    | `/strings/filter-by-natural-language` | Filter using natural language queries       |
+| `DELETE` | `/strings/{string_value}`             | Delete a specific string                    |
+
+> 📄 Full endpoint details, parameters, and example responses are documented in **Scribe API Docs**.
+
+---
+
+## 📚 **API Documentation**
+
+This project uses **Scribe** for auto-generated API documentation.
+
+To generate or update documentation:
+
+```bash
+php artisan scribe:generate
+```
+
+Then view locally at:
 
 ```
-http://127.0.0.1:8000/api/me
+http://127.0.0.1:8000/docs
 ```
 
 ---
 
-## 🧪 Testing the Endpoint
+## ☁️ **Live Deployment Link**
 
-### Request
+🟢 **Base URL:**
+`https://api.techtrovelab.com/api`
 
-**GET** `/api/me`
-
-### Example Successful Response
-
-```json
-{
-  "status": "success",
-  "user": {
-    "email": "you@example.com",
-    "name": "Full Name",
-    "stack": "Laravel/PHP"
-  },
-  "timestamp": "2025-10-16T13:00:00.123Z",
-  "fact": "Cats have five toes on their front paws but only four toes on their back paws."
-}
-```
-
-### Example Fallback Response (if Cat Facts API fails)
-
-```json
-{
-  "status": "success",
-  "user": {
-    "email": "you@example.com",
-    "name": "Full Name",
-    "stack": "Laravel/PHP"
-  },
-  "timestamp": "2025-10-16T13:00:00.123Z",
-  "fact": "Could not fetch a cat fact at this time."
-}
-```
+🟢 **API Docs (Scribe):**
+`https://api.techtrovelab.com/docs`
 
 ---
 
-## 🛡️ Features & Best Practices
+## 🚀 **Deployment**
 
-✅ Dynamic UTC timestamp in ISO 8601 format
-✅ Random cat fact fetched on every request
-✅ Fallback on API failure
-✅ Basic logging for debugging
-✅ Rate limiting to prevent abuse (`5 requests per minute`)
-✅ Interface + Service pattern for clean separation of concerns
-✅ Follows PSR-4 and SOLID principles
+You can deploy this project on any platform that supports PHP
 
----
+Make sure to:
 
-## 🧩 Project Structure
-
-```
-app/
- ├── Http/
- │   └── Controllers/
- │        └── UserController.php
- ├── Interfaces/
- │   └── UserInterface.php
- ├── Services/
- │   └── UserService.php
- └── Responses/
-      ├── ApiResponse.php
-      ├── SuccessResponse.php
-      └── ErrorResponse.php
-```
-
----
-
-## 🔧 Environment Variables
-
-| Variable            | Description                            | Default                      |
-| ------------------- | -------------------------------------- | ---------------------------- |
-| `CAT_FACTS_URL`     | External API endpoint for cat facts    | `https://catfact.ninja/fact` |
-| `CAT_FACTS_TIMEOUT` | Timeout (seconds) for external request | `10`                          |
-
----
-
-## 📜 Logging
-
-All API request logs and error messages are stored under:
-
-```
-storage/logs/laravel.log
-```
-
-Example log entries include:
-
-* API success/failure events
-* Timeout or connection errors
-
----
-
-## 🚦 Rate Limiting
-
-The `/me` endpoint is protected by Laravel’s default `throttle` middleware:
-
-```php
-Route::middleware('throttle:5,1')->get('/me', [UserController::class, 'show']);
-```
-
-→ allows **5 requests per minute per IP** before returning `HTTP 429`.
-
----
-
-
----
-
-## 🧑‍💻 Author
-
-**Name:** Abiodun ADEOSUN
-**Stack:** Laravel / PHP
-**LinkedIn:** [linkedinprofile](https://linkedin.com/in/adeosunemer025)
+1. Set up your `.env` file with correct database credentials.
+2. Run `php artisan migrate --force`. (optional)
+3. Generate documentation if needed (`php artisan scribe:generate`).
 
 ---
