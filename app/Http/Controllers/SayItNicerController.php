@@ -17,8 +17,8 @@ class SayItNicerController extends Controller
  * Rephrase a given message into a nicer tone.
  *
  * @group SayItNicer
- * 
- * @bodyParam params.message.parts.*.text string required The text to rephrase. Example: "This is too harsh!"
+ * @bodyParam id string optional The JSON-RPC request ID. Example: "rpcid"
+ * @bodyParam text string required The text to rephrase. Example: "This is too harsh!"
  * 
  * @response 200 {
  *   "jsonrpc": "2.0",
@@ -49,12 +49,12 @@ class SayItNicerController extends Controller
 public function rephrase(Request $request): JsonResponse
 {
     $rpcId = $request->input('id');
-    $messageParts = $request->input('params.message.parts', []);
+    $text = $request->input('text');
 
-    if (empty($messageParts) || empty($messageParts[0]['text'])) {
+    if (empty($text)) {
         return response()->json([
             "jsonrpc" => "2.0",
-            "id" => $rpcId,
+            "id" => $rpcId ?? null,
             "error" => [
                 "code" => -32602,
                 "message" => "Invalid params: text missing"
@@ -62,7 +62,6 @@ public function rephrase(Request $request): JsonResponse
         ], 400);
     }
 
-    $text = $messageParts[0]['text'];
     $rewritten = $this->sinService->rephrase($text);
 
     return response()->json([
@@ -109,14 +108,14 @@ public function rephrase(Request $request): JsonResponse
                 "stateTransitionHistory" => false
             ],
             "defaultInputModes" => ["text/plain"],
-            "defaultOutputModes" => ["text/plain"],
+            "defaultOutputModes" => ["text/plain", "application/json"],
             "skills" => [
                 [
                     "id" => uniqid(),
                     "name" => "Polish Text Tone",
                     "description" => "Detects harsh or blunt messages and rephrases them politely.",
                     "inputModes" => ["text/plain"],
-                    "outputModes" => ["text/plain"],
+                    "outputModes" => ["text/plain", "application/json"],
                     "examples" => [
                         [
                             "input" => "This is too harsh!",
