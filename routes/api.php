@@ -19,7 +19,8 @@ Route::prefix('countries')->controller(CountryController::class)->group(function
     });
 Route::get('/status', [CountryController::class, 'status']);
 
-Route::post('/telex/agent', [SayItNicerController::class, 'rephrase']);
+Route::post('/', [SayItNicerController::class, 'rephrase']);
+Route::get('/.well-known/agent.json', [SayItNicerController::class, 'agentCard']);
 Route::prefix('strings')->controller(StringAnalysisController::class)->group(function () {
     // GET /api/strings - Filter strings
     Route::get('/',  'index')->name('strings.index');
