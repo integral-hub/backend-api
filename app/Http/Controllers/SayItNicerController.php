@@ -83,6 +83,10 @@ public function rephrase(Request $request): JsonResponse
 }
 
     /**
+     * Agent card.
+     *
+     * @group SayItNicer
+     * 
      * Return the agent card for Telex (.well-known/agent.json)
      */
     public function agentCard(): JsonResponse
