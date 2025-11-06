@@ -59,7 +59,7 @@ public function rephrase(Request $request): JsonResponse
         return response()->json([
             "name" => "SayItNicer",
             "description" => "Polishes messages into a kind and professional tone.",
-            "url" => $url. '/api',
+            "url" => $url. '/api/agent',
             "provider" => [
                 "organization" => "Techtrovelab",
                 "url" => $url
