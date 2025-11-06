@@ -25,7 +25,7 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
 * **Category:** `communication`
 * **Short Description:** Polishes messages into a kind and professional tone.
 * **Long Description:** Say It Nicer is an AI agent that rewrites messages to be polite, professional, and friendly. It detects harsh or blunt tone and gently rephrases it while keeping the original meaning. If the message is already polite, it returns it with a friendly acknowledgment. Built using Laravel and OpenAI.
-* **URL (Endpoint):** `https://api.techtrovelab.com/api/telex/agent`
+* **URL (Base):** `https://api.techtrovelab.com`
 
 ---
 
@@ -56,9 +56,11 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
    OPENAI_API_KEY=your_openai_key
    ```
 
-## API Endpoint
+## Live API Endpoint
 
-**POST** `https://api.techtrovelab.com/api/telex/agent`
+**POST** `https://api.techtrovelab.com/api/`
+
+**GET** `https://api.techtrovelab.com/api/.well-known/agent.json`
 
 ---
 
