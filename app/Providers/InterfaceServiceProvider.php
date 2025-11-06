@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Interfaces\CountryInterface;
+use App\Interfaces\SayItNicerInterface;
 use App\Interfaces\StringAnalysisInterface;
 use App\Interfaces\UserInterface;
 use App\Services\CountryService;
+use App\Services\SayItNicerService;
 use App\Services\StringAnalysisService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
@@ -20,7 +22,8 @@ class InterfaceServiceProvider extends ServiceProvider
       public $bindings = [
         UserInterface::class => UserService::class,
         StringAnalysisInterface::class => StringAnalysisService::class,
-        CountryInterface::class => CountryService::class
+        CountryInterface::class => CountryService::class,
+        SayItNicerInterface::class => SayItNicerService::class
     ];
 
     /**

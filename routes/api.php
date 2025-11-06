@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StringAnalysisController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\SayItNicerController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['throttle:5,1'])->group(function () {
@@ -18,7 +19,7 @@ Route::prefix('countries')->controller(CountryController::class)->group(function
     });
 Route::get('/status', [CountryController::class, 'status']);
 
-
+Route::post('/telex/agent', [SayItNicerController::class, 'rephrase']);
 Route::prefix('strings')->controller(StringAnalysisController::class)->group(function () {
     // GET /api/strings - Filter strings
     Route::get('/',  'index')->name('strings.index');
