@@ -35,7 +35,7 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
 
    ```bash
    git clone https://github.com/integral-hub/backend-api.git
-   cd say-it-nicer
+   cd backend-api
    ```
 
 2. **Install dependencies**:
