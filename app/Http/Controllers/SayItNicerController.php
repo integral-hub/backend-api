@@ -57,7 +57,7 @@ public function rephrase(Request $request): JsonResponse
         $url = config('app.url');
     
         return response()->json([
-            "name" => "say_it_nicer_agent",
+            "name" => "SayItNicer",
             "description" => "Polishes messages into a kind and professional tone.",
             "url" => $url. '/api',
             "provider" => [
