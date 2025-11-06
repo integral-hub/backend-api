@@ -13,6 +13,39 @@ class SayItNicerController extends Controller
         private readonly SayItNicerInterface $sinService
     ){}
 
+/**
+ * Rephrase a given message into a nicer tone.
+ *
+ * @group SayItNicer
+ * 
+ * @bodyParam params.message.parts.*.text string required The text to rephrase. Example: "This is too harsh!"
+ * 
+ * @response 200 {
+ *   "jsonrpc": "2.0",
+ *   "id": "1",
+ *   "result": {
+ *     "role": "agent",
+ *     "parts": [
+ *       {
+ *         "type": "text",
+ *         "text": "Here’s a kinder way to phrase that: ..."
+ *       }
+ *     ],
+ *     "kind": "message",
+ *     "message_id": "5f2c1e3e7c3b5"
+ *   }
+ * }
+ * 
+ * @response 400 {
+ *   "jsonrpc": "2.0",
+ *   "id": "1",
+ *   "error": {
+ *     "code": -32602,
+ *     "message": "Invalid params: text missing"
+ *   }
+ * }
+ */
+
 public function rephrase(Request $request): JsonResponse
 {
     $rpcId = $request->input('id');
