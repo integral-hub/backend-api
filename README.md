@@ -6,7 +6,7 @@ Absolutely! Here's a **professional, ready-to-use README** for your “Say It Ni
 
 **Say It Nicer** is an AI-powered agent built to help users communicate more politely and professionally. The agent detects harsh, blunt, or rude messages and rephrases them into a kind, concise, and professional tone. If a message is already polite, it simply returns it with a friendly acknowledgment.
 
-This agent is built with **Laravel** and **OpenAI**, and fully integrated with **Telex.im** via a public API endpoint.
+This agent is built with **Laravel** and **Gemini**, and fully integrated with **Telex.im** via a public API endpoint.
 
 ---
 
@@ -24,7 +24,7 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
 * **Agent Name:** `SayItNicer`
 * **Category:** `communication`
 * **Short Description:** Polishes messages into a kind and professional tone.
-* **Long Description:** Say It Nicer is an AI agent that rewrites messages to be polite, professional, and friendly. It detects harsh or blunt tone and gently rephrases it while keeping the original meaning. If the message is already polite, it returns it with a friendly acknowledgment. Built using Laravel and OpenAI.
+* **Long Description:** Say It Nicer is an AI agent that rewrites messages to be polite, professional, and friendly. It detects harsh or blunt tone and gently rephrases it while keeping the original meaning. If the message is already polite, it returns it with a friendly acknowledgment. Built using Laravel and Gemini.
 * **URL (Base):** `https://api.techtrovelab.com`
 
 ---
@@ -50,15 +50,15 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
    cp .env.example .env
    ```
 
-   Set your **OpenAI API key**:
+   Set your **Gemini API key**:
 
    ```
-   OPENAI_API_KEY=your_openai_key
+   Gemini_API_KEY=your_Gemini_key
    ```
 
 ## Live API Endpoint
 
-**POST** `https://api.techtrovelab.com/api/`
+**POST** `https://api.techtrovelab.com/api/agent`
 
 **GET** `https://api.techtrovelab.com/api/.well-known/agent.json`
 
@@ -78,7 +78,7 @@ This agent is built with **Laravel** and **OpenAI**, and fully integrated with *
 ## Tech Stack
 
 * **Backend:** Laravel (PHP)
-* **AI:** OpenAI GPT API
+* **AI:** Gemini GPT API
 * **Integration:** Telex.im Workflow (A2A Agent Node)
 
 ---
