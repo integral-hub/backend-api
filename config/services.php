@@ -27,6 +27,11 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
+        'endpoint' => env('GEMINI_ENDPOINT'),
+        'model' => env('GEMINI_MODEL'),
+    ],
 
     'slack' => [
         'notifications' => [
